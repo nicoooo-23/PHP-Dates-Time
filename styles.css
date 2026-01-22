@@ -1,19 +1,18 @@
 /* Rivera, Ella Nicole T. | WD-201 */
 
-/* Base styles */
+/* Base */
 html {
     scroll-behavior: smooth;
 }
 
-body { 
-    font-family: sans-serif; 
-    margin: 0; 
-    padding: 0; 
-    background-color: #f4f6f8;
-    color:#2e3d86;
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f4f6f8;
+    color: #2e3d86;
 }
 
-/* header */
+/* STICKY NAVBAR */
 header nav {
     position: fixed;
     top: 0;
@@ -23,62 +22,56 @@ header nav {
 }
 
 /* navbar */
-nav { 
-    background: midnightblue; 
-    color: #ddd; 
+nav {
+    background: #2e3d86;
+    color: #ddd;
     padding: 0;
-    position: relative; /* lets the child element (dropdown) position itself absolutely relative to it */
+    position: relative;
 }
 
-.menu { 
-    display: flex; 
-    list-style: none; 
-    padding: 0; 
-    margin: 0; 
+.menu {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-.menu li { 
-    position: relative; /* each list item would be positioned relatively so dropdowns can be put inside */
+.menu li {
+    position: relative;
 }
 
-.menu li a { 
-    padding: 10px 15px; 
-    display: block; 
-    color: #ddd; 
-    text-decoration: none; 
-    transition: background 0.3s ease; /* smooth hover bg change */
+.menu li a {
+    padding: 10px 15px;
+    display: block;
+    color: #ddd;
+    text-decoration: none;
 }
 
-.menu li a:hover { 
-    background: #2e3d86; 
+.menu li a:hover {
+    background: #2e3d86;
 }
 
 /* submenu */
-.submenu { 
-    display: none; 
-    position: absolute; /* so it appears underneath the main menu */
-    background: #1a1a4a; 
+.submenu {
+    display: none;
+    position: absolute;
+    background: #1a1a4a;
     list-style: none;
     padding: 0;
     margin: 0;
     min-width: 150px;
-    z-index: 10; /* makes sure it shows up above other elements */
+}
+
+.submenuTitle:hover + .submenu,
+.submenu:hover {
+    display: block;
 }
 
 .submenu li a {
     padding: 8px 12px;
 }
 
-.submenu li a:hover {
-    background: #2e3d86;
-}
-
-.submenuTitle:hover + .submenu, 
-.submenu:hover { 
-    display: block; 
-}
-
-/* hide the checkbox */
+/* hide checkbox */
 #check {
     display: none;
 }
@@ -89,52 +82,44 @@ nav {
     color: #ddd;
     cursor: pointer;
     padding: 10px 15px;
-    display: none; /* hidden on desktop */
+    display: none;
 }
 
 /* banner */
 .banner {
-    margin-top: 10px;
-    padding: 10px;
+    margin-top: 50px;
+    padding: 20px;
     background-color: #2e3d86;
-    color:#ddd;
+    color: #ddd;
+    text-align: center;
 }
 
-.banner img { 
-    width: 100%; 
-    height: auto; 
+main {
+    margin: 20px;
 }
 
-/* flights container */
-.flights { 
-    display: flex; 
-    flex-direction: column;
-    flex-wrap: wrap; 
-    align-items: center;
-    gap: 20px; 
-    padding: 20px; 
+main h2 {
+    padding-left: 20px;
 }
 
-.flight { 
-    flex: 1 1 100%; 
-    background: #f9f9f9; 
-    padding: 10px; 
-    box-sizing: border-box;
+/* CARD GRID */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
 }
 
-.domestic, .international {
-    display: flex;
-    flex-direction: row;
-}
-
-#timezones p {
-    display: flex;
-    flex-direction: row;
+.flight {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .flight img {
     width: 100%;
-    height: 400px;
+    height: 200px;
     object-fit: cover; /* keep aspect ratio (fill) */
     border-bottom: 2px solid #ddd;
     margin-bottom: 10px;
@@ -145,14 +130,36 @@ nav {
     transform: scale(1.05); /* zoom in a bit on hover */
 }
 
+.flight-info {
+    padding: 15px;
+}
+
+.flight-info h3 {
+    margin: 0 0 10px 0;
+}
+
+.tz {
+    font-size: 0.85rem;
+    color: gray;
+}
+
+/* timezones */
+#timezones {
+    margin: 20px;
+    padding: 20px;
+    background: #eaeaea;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 /* footer */
 footer {
-    background-color: midnightblue;
-    text-align: center;
+    background: #2e3d86;
     color: white;
-    padding: 20px 15px;
-    margin-top: 40px;
-    font-size: 0.9rem;
+    text-align: center;
+    padding: 15px;
 }
 
 footer a {
@@ -165,36 +172,18 @@ footer a:hover {
     color: lightblue;
 }
 
-/* social media links */
-.social-links {
-  margin-top: 10px;
-}
-
-.social-links a {
-  color: lightcyan;
-  text-decoration: none;
-  margin: 0 10px;
-  font-weight: bold;
-}
-
-.social-links a:hover {
-  text-decoration: underline;
-  color: lightblue;
-}
-
+/* MOBILE NAV */
 
 /* Tablet */
-@media (min-width: 481px) {
-  .flight { flex: 1 1 45%; }
-}
-
-/* Desktop */
-@media (min-width: 769px) {
-  .flight { flex: 1 1 30%; }
+@media (max-width: 1024px) {
+    .flight { flex: 1 1 45%; }
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 /* Mobile nav */
-@media (max-width: 768px) {
+@media (max-width: 600px) {
     .checkbtn {
         display: block; /* show hamburger icon on mobile */
     }
@@ -213,5 +202,9 @@ footer a:hover {
     .submenu {
         position: static; /* positioned so that it's not floating */
         background: #1a1a4a;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
     }
 }
