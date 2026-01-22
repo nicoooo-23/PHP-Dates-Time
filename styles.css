@@ -1,0 +1,217 @@
+/* Rivera, Ella Nicole T. | WD-201 */
+
+/* Base styles */
+html {
+    scroll-behavior: smooth;
+}
+
+body { 
+    font-family: sans-serif; 
+    margin: 0; 
+    padding: 0; 
+    background-color: #f4f6f8;
+    color:#2e3d86;
+}
+
+/* header */
+header nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+/* navbar */
+nav { 
+    background: midnightblue; 
+    color: #ddd; 
+    padding: 0;
+    position: relative; /* lets the child element (dropdown) position itself absolutely relative to it */
+}
+
+.menu { 
+    display: flex; 
+    list-style: none; 
+    padding: 0; 
+    margin: 0; 
+}
+
+.menu li { 
+    position: relative; /* each list item would be positioned relatively so dropdowns can be put inside */
+}
+
+.menu li a { 
+    padding: 10px 15px; 
+    display: block; 
+    color: #ddd; 
+    text-decoration: none; 
+    transition: background 0.3s ease; /* smooth hover bg change */
+}
+
+.menu li a:hover { 
+    background: #2e3d86; 
+}
+
+/* submenu */
+.submenu { 
+    display: none; 
+    position: absolute; /* so it appears underneath the main menu */
+    background: #1a1a4a; 
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    min-width: 150px;
+    z-index: 10; /* makes sure it shows up above other elements */
+}
+
+.submenu li a {
+    padding: 8px 12px;
+}
+
+.submenu li a:hover {
+    background: #2e3d86;
+}
+
+.submenuTitle:hover + .submenu, 
+.submenu:hover { 
+    display: block; 
+}
+
+/* hide the checkbox */
+#check {
+    display: none;
+}
+
+/* hamburger icon */
+.checkbtn {
+    font-size: 1.5rem;
+    color: #ddd;
+    cursor: pointer;
+    padding: 10px 15px;
+    display: none; /* hidden on desktop */
+}
+
+/* banner */
+.banner {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #2e3d86;
+    color:#ddd;
+}
+
+.banner img { 
+    width: 100%; 
+    height: auto; 
+}
+
+/* flights container */
+.flights { 
+    display: flex; 
+    flex-direction: column;
+    flex-wrap: wrap; 
+    align-items: center;
+    gap: 20px; 
+    padding: 20px; 
+}
+
+.flight { 
+    flex: 1 1 100%; 
+    background: #f9f9f9; 
+    padding: 10px; 
+    box-sizing: border-box;
+}
+
+.domestic, .international {
+    display: flex;
+    flex-direction: row;
+}
+
+#timezones p {
+    display: flex;
+    flex-direction: row;
+}
+
+.flight img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover; /* keep aspect ratio (fill) */
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease; /* hover animation */
+}
+
+.flight img:hover {
+    transform: scale(1.05); /* zoom in a bit on hover */
+}
+
+/* footer */
+footer {
+    background-color: midnightblue;
+    text-align: center;
+    color: white;
+    padding: 20px 15px;
+    margin-top: 40px;
+    font-size: 0.9rem;
+}
+
+footer a {
+    text-decoration: none;
+    color: lightcyan;
+}
+
+footer a:hover {
+    text-decoration: underline;
+    color: lightblue;
+}
+
+/* social media links */
+.social-links {
+  margin-top: 10px;
+}
+
+.social-links a {
+  color: lightcyan;
+  text-decoration: none;
+  margin: 0 10px;
+  font-weight: bold;
+}
+
+.social-links a:hover {
+  text-decoration: underline;
+  color: lightblue;
+}
+
+
+/* Tablet */
+@media (min-width: 481px) {
+  .flight { flex: 1 1 45%; }
+}
+
+/* Desktop */
+@media (min-width: 769px) {
+  .flight { flex: 1 1 30%; }
+}
+
+/* Mobile nav */
+@media (max-width: 768px) {
+    .checkbtn {
+        display: block; /* show hamburger icon on mobile */
+    }
+    .menu {
+        flex-direction: column; /* vertical stack on mobile */
+        display: none; /* hide menu by default on mobile */
+        background: midnightblue;
+    }
+    .menu li {
+        width: 100%;
+    }
+    /* show menu when checkbox is checked */
+    #check:checked ~ .menu {
+        display: flex;
+    }
+    .submenu {
+        position: static; /* positioned so that it's not floating */
+        background: #1a1a4a;
+    }
+}
